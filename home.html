@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PXG KRD VIP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeDown 1.2s ease-out;
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            background: linear-gradient(90deg, #ff0080, #00ffcc, #ff0080);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s linear infinite, glow 2s ease-in-out infinite alternate;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .header h1::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(90deg, transparent, #ff0080, #00ffcc, transparent);
+            border-radius: 5px;
+            animation: lineWidth 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0ff;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 30px;
+            max-width: 1200px;
+            width: 100%;
+            animation: fadeUp 1.5s ease-out;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 204, 0.2);
+            border-color: #00ffcc;
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff0080;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px 20px 0 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .footer h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00ffcc, #ff0080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            animation: colorShift 4s infinite alternate;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #d0d0ff;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .highlight {
+            color: #00ffcc;
+            font-weight: 700;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+
+        .pulse-animation {
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes gradientShift {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080; }
+            100% { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+        }
+
+        @keyframes lineWidth {
+            0% { width: 30%; left: 35%; }
+            100% { width: 100%; left: 0; }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes colorShift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .footer h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>PXG KRD VIP</h1>
+        <p class="subtitle">بەرزترین ئاستی خزمەتگوزاری و دەستڕاگەیشتن</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-crown"></i>
+                <h3>ئەندامی تایبەت</h3>
+                <p>دەستڕاگەیشتن بە هەموو کەرەستە تایبەتەکان و ڕابوردوەکان</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>خێرایی زۆر</h3>
+                <p>خزمەتگوزارییەکانی پڕ لە خێرایی و کارایی بەرز</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>پارێزگاری تەواو</h3>
+                <p>پارێزگاری و ئاسایشی ١٠٠% بۆ هەژمارەکەت</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gem"></i>
+                <h3>دەستڕاگەیشتنی بێهاوتا</h3>
+                <p>تایبەتمەندییەکانی تایبەتی کە تەنیا بۆ ئەندامانی VIP</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <h2>سوپاس بۆ داخڵبونت بەڕێز <span class="highlight"></span></h2>
+        <p>لە کەمترین کاتدا هەژمارەکەت <span class="highlight pulse-animation">چالاک ئەبێت</span></p>
+        <p>ئێمە لێرەین بۆ هەموو پێویستییەکانت و خزمەتکردنت بە باشترین شێوە!</p>
+        <p style="margin-top: 20px; color: #a0a0ff; font-size: 1rem;">
+            <i class="fas fa-envelope"></i> پەیوەندی:  |
+            <i class="fas fa-phone"></i>
+        </p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js Configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#ff0080", "#00ffcc", "#ffffff"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00ffcc",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Additional animation for feature cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
